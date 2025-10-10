@@ -1,0 +1,44 @@
+PRODUCTS = {
+    "tshirt": 450,
+    "shirt": 250,
+    "hat": 150,
+    "shoes": 600,
+    "sandals": 300
+}
+
+def show_menu():
+    print("\nAvailable products:")
+    for name, price in PRODUCTS.items():
+        print(f" - {name.title():8s} : ₱{price}")
+    print()
+
+def add_to_cart(cart, item, qty=1):
+    if item not in PRODUCTS:
+        print(" Sorry, item not found.")
+        return
+    cart[item] = cart.get(item, 0) + qty
+    print(f" Added {qty} x {item.title()}")
+
+def compute_subtotal(cart):
+    return sum(PRODUCTS[item] * qty for item, qty in cart.items())
+
+def print_receipt(cart):
+    print("\n--- RECEIPT ---")
+    for item, qty in cart.items():
+        price = PRODUCTS[item]
+        line = price * qty
+        print(f"{item.title():8s} x{qty:<2d} @ ₱{price:<4d} = ₱{line}")
+    subtotal = compute_subtotal(cart)
+    print(f"\nSubtotal: ₱{subtotal}")
+
+def main():
+    cart = {}
+    show_menu()
+
+    while True:
+        item = input("Enter product name (or 'done' to finish): ").lower()
+        if item == "done":
+            break
+        if item not in PRODUCTS:
+            print(" That product is not available.")
+            continud 
