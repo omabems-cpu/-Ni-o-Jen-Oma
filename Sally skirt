@@ -1,0 +1,19 @@
+import turtle
+
+# Create a turtle object
+t = turtle.Turtle()
+t.color("red", "pink")
+t.begin_fill()
+
+# Move the turtle to draw a heart
+t.left(140)
+t.forward(180)
+t.circle(-90, 200)
+t.left(120)
+t.circle(-90, 200)
+t.forward(180)
+
+t.end_fill()
+t.hideturtle()
+
+turtle.done()
